@@ -61,7 +61,7 @@ refactor:优化获取对象数组方法
  */
 function getObjectArray(n) {
     if (n <= 0) {
-        throw new Error("长度非法");
+        throw new Error('长度非法');
     }
     let a = [];
     for (let i = 0; i < n; ++i) a.push({});
@@ -79,13 +79,44 @@ function getObjectArray(n) {
  */
 function getObjectArray(n) {
     if (n <= 0) {
-        throw new Error("长度非法");
+        throw new Error('长度非法');
     }
     return Array.from({ length: n }, () => ({}));
 }
 ```
 
-3.
+3. style: 规范修复
+
+```text
+style:代码规范修复
+```
+
+```js{7-9}
+/**
+ * 模拟长度为 n 的对象数组
+ * @param {number} n 数组长度
+ * @returns {object[]}
+ */
+function getObjectArray(n) {
+    if(n<=0){throw new Error('长度非法')
+    }
+    return Array.from({length:n}, () =>({}))
+}
+```
+
+```js{7-10}
+/**
+ * 模拟长度为 n 的对象数组
+ * @param {number} n 数组长度
+ * @returns {object[]}
+ */
+function getObjectArray(n) {
+    if (n <= 0) {
+        throw new Error('长度非法');
+    }
+    return Array.from({ length: n }, () => ({}));
+}
+```
 
 ## 参考文章
 
