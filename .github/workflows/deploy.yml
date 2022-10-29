@@ -23,6 +23,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.REGEX_HUB_TOKEN }}
+          github_token: ${{ secrets.SHINE_TOKEN }}
           publish_dir: .vitepress/dist
           # cname: example.com # if wanna deploy to custom domain
