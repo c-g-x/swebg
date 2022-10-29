@@ -1,8 +1,5 @@
 name: Deploy pages
 on: push
-defaults:
-  run:
-    working-directory: docs
 jobs:
   deploy:
     runs-on: ubuntu-latest
