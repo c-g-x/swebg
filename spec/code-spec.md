@@ -28,7 +28,7 @@ Commit Message 标准格式包括三个部分：Header, Body, Footer
 | fix         | 修复 bug (A bug fix)                                                                                              |
 | improvement | 对当前功能的改进 (An improvement)                                                                                 |
 | docs        | 仅包含文档的修改                                                                                                  |
-| style       | 格式化变动                                                                                                        |
+| style       | 格式化变动，例如添加分号和其它调整代码规范的行为等                                                                |
 | refactor    | 重构，既不是新增功能，也不是修改 bug 的变动                                                                       |
 | perf        | 提高性能的修改 (A code change that improves performance                                                           |
 | test        | 添加或修改测试代码                                                                                                |
@@ -37,9 +37,55 @@ Commit Message 标准格式包括三个部分：Header, Body, Footer
 | chore       | 杂项，其它不修改源代码与测试代码的修改 (Other changes that don't modify src or test files                         |
 | revert      | 撤销某次提交 (Reverts a previous commit)                                                                          |
 
-## 提交示例
+## Examples
 
+1. feat: 新增管理员维护功能查询页
 
+```text
+feat(管理员维护):新增查询页
+```
+
+2. refactor: 重构代码
+
+```text
+refactor:优化获取对象数组方法
+```
+
+代码示例 (old)：
+
+```js{10-12}
+/**
+ * 模拟长度为 n 的对象数组
+ * @param {number} n 数组长度
+ * @returns {object[]}
+ */
+function getObjectArray(n) {
+    if (n <= 0) {
+        throw new Error("长度非法");
+    }
+    let a = [];
+    for (let i = 0; i < n; ++i) a.push({});
+    return a;
+}
+```
+
+代码示例 (new)：
+
+```js{10}
+/**
+ * 模拟长度为 n 的对象数组
+ * @param {number} n 数组长度
+ * @returns {object[]}
+ */
+function getObjectArray(n) {
+    if (n <= 0) {
+        throw new Error("长度非法");
+    }
+    return Array.from({ length: n }, () => ({}));
+}
+```
+
+3.
 
 ## 参考文章
 
