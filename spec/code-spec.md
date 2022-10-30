@@ -5,7 +5,7 @@ Commit Message 标准格式包括三个部分：Header, Body, Footer
 ## 提交格式
 
 ```text{1}
-<type>(<scope>):<subject>
+<type>(<scope>): <subject>
 // 空一行
 <body>
 // 空一行
@@ -42,13 +42,13 @@ Commit Message 标准格式包括三个部分：Header, Body, Footer
 1. feat: 新增管理员维护功能查询页
 
 ```text
-feat(管理员维护):新增查询页
+feat(管理员维护): 新增查询页
 ```
 
 2. refactor: 重构代码
 
 ```text
-refactor:优化获取对象数组方法
+refactor: 优化获取对象数组方法
 ```
 
 代码示例 (old)：
@@ -88,7 +88,7 @@ function getObjectArray(n) {
 3. style: 规范修复
 
 ```text
-style:代码规范修复
+style: 代码规范修复
 ```
 
 ```js{7-9}
