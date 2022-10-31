@@ -156,7 +156,7 @@ lockfile=false
 
 6. `.gitignore`
 
-```gitignore
+```text
 .DS_Store
 node_modules/
 npm-debug.log*
