@@ -1,10 +1,10 @@
 ## 升级流程
 
-1. `build/*`
+### 1. `build/*`
 
 覆盖原本的 build 文件夹，若原本该组件的脚手架不包含 `build/test` 文件夹，则更新后也不能包含 `build/text` 文件夹
 
-2. `config/index.js`
+### 2. `config/index.js`
 
 若包含以下高亮行代码
 
@@ -30,7 +30,7 @@ module.exports = {
 };
 ```
 
-3. `.npmrc`
+### 3. `.npmrc`
 
 ```text
 node-linker=hoisted
@@ -40,7 +40,7 @@ child-concurrency=8
 lockfile=false
 ```
 
-4. `.babelrc`
+### 4. `.babelrc`
 
 ```json
 {
@@ -59,12 +59,13 @@ lockfile=false
 }
 ```
 
-5. `package.json`
-    1. 若原本 main 入口为 `./lib/index.js`，则调整为 `src/index.js`
-    2. 更新 scripts 中 `dev` 为 `webpack serve --config build/webpack.dev.conf.js`
-    3. 更新 scripts 中 `build` 命令为 `node build/build.js`
-    4. 若原本 scripts 中无 `test` 命令，则无需新增该命令
-    5. 调整 `devDependencies` 为以下内容
+### 5. `package.json`
+
+1. 若原本 main 入口为 `./lib/index.js`，则调整为 `src/index.js`
+2. 更新 scripts 中 `dev` 为 `webpack serve --config build/webpack.dev.conf.js`
+3. 更新 scripts 中 `build` 命令为 `node build/build.js`
+4. 若原本 scripts 中无 `test` 命令，则无需新增该命令
+5. 调整 `devDependencies` 为以下内容
 
 ```json{2,4,7,9-13,16-86}
 {
@@ -154,7 +155,7 @@ lockfile=false
 }
 ```
 
-6. `.gitignore`
+### 6. `.gitignore`
 
 ```text
 .DS_Store
