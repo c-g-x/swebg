@@ -7,7 +7,7 @@
     <meta name="description" content="WEB 框架小组文档">
     <link rel="stylesheet" href="/swebg/assets/style.47778ac2.css">
     <link rel="modulepreload" href="/swebg/assets/app.07389e3a.js">
-    <link rel="modulepreload" href="/swebg/assets/spec_cli-update_index.md.0d3f998d.lean.js">
+    <link rel="modulepreload" href="/swebg/assets/spec_cli-update_index.md.e0309068.lean.js">
     
     <script id="check-dark-light">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
   </head>
@@ -143,8 +143,11 @@
 <span class="line"><span style="color:#A6ACCD;">*.ntvs*</span></span>
 <span class="line"><span style="color:#A6ACCD;">*.njsproj</span></span>
 <span class="line"><span style="color:#A6ACCD;">*.sln</span></span>
-<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h2 id="qa" tabindex="-1">QA <a class="header-anchor" href="#qa" aria-hidden="true">#</a></h2><h3 id="指定了-main-入口为-src-下，但引用这个包的地方缺少-src-文件夹？" tabindex="-1">指定了 main 入口为 src 下，但引用这个包的地方缺少 src 文件夹？ <a class="header-anchor" href="#指定了-main-入口为-src-下，但引用这个包的地方缺少-src-文件夹？" aria-hidden="true">#</a></h3><ul><li><p>问题详情 <img src="/swebg/assets/img_1.f4f5fdf1.png" alt="img_1.png"></p></li><li><p>解决方案：排查 .gitignore 下是否包含<code>src/</code>目录，若包含，则在 npm publish 时会将 src 目录忽略，将该忽略规则删除即可 <img src="/swebg/assets/img.7c9c7da2.png" alt="img.png"></p></li></ul></div></div></main><!--[--><!--]--><!----><!--[--><!--]--></div></div></div></div></div><!----><!--[--><!--]--></div></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"6472edd7\",\"spec_cli-update_index.md\":\"0d3f998d\",\"spec_code-spec.md\":\"8b1ec2fa\",\"spec_component-publish-spec_index.md\":\"679d8d3d\",\"spec_index.md\":\"3691f924\"}")</script>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;"># Ignore for publish</span></span>
+<span class="line"><span style="color:#A6ACCD;">.babelrc</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h2 id="qa" tabindex="-1">QA <a class="header-anchor" href="#qa" aria-hidden="true">#</a></h2><h3 id="指定了-main-入口为-src-下，但引用这个包的地方缺少-src-文件夹？" tabindex="-1">指定了 main 入口为 src 下，但引用这个包的地方缺少 src 文件夹？ <a class="header-anchor" href="#指定了-main-入口为-src-下，但引用这个包的地方缺少-src-文件夹？" aria-hidden="true">#</a></h3><ul><li><p>问题详情 <img src="/swebg/assets/img_1.f4f5fdf1.png" alt="img_1.png"></p></li><li><p>解决方案：排查 .gitignore 下是否包含<code>src/</code>目录，若包含，则在 npm publish 时会将 src 目录忽略，将该忽略规则删除即可 <img src="/swebg/assets/img.7c9c7da2.png" alt="img.png"></p></li></ul></div></div></main><!--[--><!--]--><!----><!--[--><!--]--></div></div></div></div></div><!----><!--[--><!--]--></div></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"6472edd7\",\"spec_cli-update_index.md\":\"e0309068\",\"spec_code-spec.md\":\"8b1ec2fa\",\"spec_component-publish-spec_index.md\":\"679d8d3d\",\"spec_index.md\":\"3691f924\"}")</script>
     <script type="module" async src="/swebg/assets/app.07389e3a.js"></script>
     
   </body>
