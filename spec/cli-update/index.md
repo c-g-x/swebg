@@ -1,6 +1,6 @@
 ## 升级流程
 
-1. `config/js`
+1. `config/index.js`
 
 ```js{4}
 module.exports = {
