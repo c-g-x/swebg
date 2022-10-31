@@ -1,3 +1,29 @@
+## 升级流程
+
+1. `config/js`
+
+```js{4}
+module.exports = {
+    dev: {
+        // ...
+        devtool: 'cheap-module-eval-source-map'
+        // ...
+    }
+};
+```
+
+调整为：
+
+```js{4}
+module.exports = {
+    dev: {
+        // ...
+        devtool: 'eval-cheap-module-source-map'
+        // ...
+    }
+};
+```
+
 ## QA
 
 ### 指定了 main 入口为 src 下，但引用这个包的地方缺少 src 文件夹？
