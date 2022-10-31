@@ -171,6 +171,9 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+# Ignore for publish
+.babelrc
 ```
 
 ## QA
