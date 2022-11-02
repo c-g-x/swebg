@@ -13,7 +13,7 @@
     "license": "ISC",
     "dependencies": {
         "@algolia/client-search": "^4.14.2",
-        "vitepress": "d"
+        "vitepress": "1.0.0-alpha.26"
     },
     "devDependencies": {
         "naive-ui": "^2.33.5",
