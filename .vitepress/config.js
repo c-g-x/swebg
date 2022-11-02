@@ -1,12 +1,12 @@
-import DefaultTheme from 'vitepress/theme';
-import naive from 'naive-ui';
+// import DefaultTheme from 'vitepress/theme';
+// import naive from 'naive-ui';
 
 export default {
-    ...DefaultTheme,
-    enhanceApp(ctx) {
-        DefaultTheme.enhanceApp(ctx);
-        ctx.app.use(naive);
-    },
+    // ...DefaultTheme,
+    // enhanceApp(ctx) {
+        // DefaultTheme.enhanceApp(ctx);
+        // ctx.app.use(naive);
+    // },
     title: 'WEB 框架小组',
     description: 'WEB 框架小组文档',
     lang: 'zh-CN',
