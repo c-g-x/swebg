@@ -31,6 +31,10 @@ export default {
                     {
                         text: '脚手架升级流程',
                         link: '/spec/cli-update/index.md'
+                    },
+                    {
+                        text: 'TPF 升级流程',
+                        link: '/spec/tpf-update/index.md'
                     }
                 ]
             },
