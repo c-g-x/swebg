@@ -62,3 +62,4 @@
 4. `tpf-dfa-facade/pom.xml` 同上
 5. `tpf-dfa-impl/pom.xml` 同上
 6. `tpf-service/pom.xml` 同上
+7. `pom.xml` 同上
