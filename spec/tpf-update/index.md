@@ -66,7 +66,7 @@
 
 ## Oracle 脚本调整
 
-### 1. `update_main.bat`
+### 1. `Oracle/update_main.bat`
 
 调整为升级`当前版本（1.0.1.11）`依赖的 TPF 版本号，通常为`上个版本（1.0.1.10）`
 
@@ -83,3 +83,52 @@
 @REM ...
 ```
 
+本升级包版本号修改为当前版本号
+
+```text{2}
+   @REM 本升级包版本号
+   SET INSTALL_VERSION="E-PBOS-TPF 1.0.1.11"
+   @REM 获取已安装的小于升级包版本的最新版本号
+```
+
+### 2. `Oracle/ES_TPF/Update/Init/Update_Log.sql`
+
+修改为当前版本号
+
+```sql{9-10}
+--以下语句固定放在升级脚本的最后
+--增加升级日志说明
+INSERT INTO TPF_UPDATE_LOG
+    (ID, APP_ID, UP_DATE, UP_TIME, UP_VERSION, UP_DESC, NOTE, UP_TYPE)
+SELECT S_TPF_UPDATE_LOG.NEXTVAL,
+       '56',
+       TO_CHAR(SYSDATE, 'YYYYMMDD'),
+       TO_CHAR(SYSDATE, 'HH24:MI:SS'),
+       'E-PBOS-TPF 1.0.1.11',
+       'E-PBOS-TPF 1.0.1.11 升级',
+       '',
+       '1'
+  FROM DUAL;
+COMMIT;
+```
+
+## Gauss 脚本调整
+
+### 1. `Gauss/ES_TPF/Update/Init/Update_Log.sql`
+
+```sql{9-10}
+--以下语句固定放在升级脚本的最后
+--增加升级日志说明
+INSERT INTO ES_TPF.TPF_UPDATE_LOG
+    (ID, APP_ID, UP_DATE, UP_TIME, UP_VERSION, UP_DESC, NOTE, UP_TYPE)
+SELECT ES_TPF.S_TPF_UPDATE_LOG.NEXTVAL,
+       '56',
+       TO_CHAR(SYSDATE, 'YYYYMMDD'),
+       TO_CHAR(SYSDATE, 'HH24:MI:SS'),
+       'E-PBOS-TPF 1.0.1.11',
+       'E-PBOS-TPF 1.0.1.11 升级',
+       '',
+       '1'
+  FROM ES_TPF.DUAL;
+COMMIT;
+```
