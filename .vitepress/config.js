@@ -59,6 +59,15 @@ export default {
                         link: '/study/css/index.md'
                     }
                 ]
+            },
+            {
+                text: '其它',
+                items: [
+                    {
+                        text: '小工具',
+                        link: '/other/toolkit/index.md'
+                    }
+                ]
             }
         ]
     }
