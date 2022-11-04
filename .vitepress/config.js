@@ -4,8 +4,8 @@
 export default {
     // ...DefaultTheme,
     // enhanceApp(ctx) {
-        // DefaultTheme.enhanceApp(ctx);
-        // ctx.app.use(naive);
+    // DefaultTheme.enhanceApp(ctx);
+    // ctx.app.use(naive);
     // },
     title: 'WEB 框架小组',
     description: 'WEB 框架小组文档',
@@ -35,6 +35,19 @@ export default {
                     {
                         text: 'TPF 升级流程',
                         link: '/spec/tpf-update/index.md'
+                    },
+                    {
+                        text: 'IBT 升级流程',
+                        link: '/spec/ibt-update/index.md'
+                    }
+                ]
+            },
+            {
+                text: '脚手架',
+                items: [
+                    {
+                        text: 'pnpm',
+                        link: '/cli/pnpm/index.md'
                     }
                 ]
             },
