@@ -16,14 +16,6 @@ Removed 25375 files
 Removed 1038 packages
 ```
 
-## 链接本地包
-
-> https://pnpm.io/zh/cli/link
-
-```bash
-pnpm link --global
-```
-
 ## 检查过期依赖
 
 每隔一段时间关注一下当前使用的依赖是否过期，过期的依赖可能会带来安全隐患。
