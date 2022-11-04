@@ -121,6 +121,9 @@ function getObjectArray(n) {
 ## 参考文章
 
 > [使用 commitizen 规范 Git 提交说明](https://zhuanlan.zhihu.com/p/132348944)
+>
 > [SVN 提交备注规范](https://blog.csdn.net/yunfeather/article/details/126505266)
+>
 > [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
-> [你的git commit规范吗？看完从此commit不迷茫，带领团队更规范](https://zhuanlan.zhihu.com/p/400870942)
+>
+> [你的 git commit 规范吗？看完从此 commit 不迷茫，带领团队更规范](https://zhuanlan.zhihu.com/p/400870942)

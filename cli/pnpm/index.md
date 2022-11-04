@@ -84,5 +84,7 @@ pnpm doctor
 ## 相关阅读
 
 > [都2022年了，pnpm快到碗里来！](https://zhuanlan.zhihu.com/p/457698236)
+> 
 > [关于现代包管理器的深度思考——为什么现在我更推荐 pnpm 而不是 npm/yarn?](https://zhuanlan.zhihu.com/p/377593512)
+> 
 > [pnpm 中无法使用 patch-package 打补丁](https://lwebapp.com/zh/post/pnpm-patch-package)
