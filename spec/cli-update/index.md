@@ -54,8 +54,7 @@ lockfile=false
                 }
             }
         ]
-    ],
-    "plugins": ["transform-vue-jsx", "babel-plugin-syntax-dynamic-import"]
+    ]
 }
 ```
 
