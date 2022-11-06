@@ -6,10 +6,6 @@
 
 ### 注意
 
-::: details
-This is a details block.
-:::
-
 ::: details 若原本 `build/check-legal.js` 下已有 Slint 校验规则，则取以下代码
 ```js
 const path = require('path'),
