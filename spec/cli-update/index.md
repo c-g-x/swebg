@@ -7,6 +7,7 @@
 ### 注意
 
 ::: details 若原本 `build/check-legal.js` 下已有 Slint 校验规则，则取以下代码
+
 ```js
 const path = require('path'),
     _ = require('lodash'),
@@ -206,9 +207,11 @@ var runSlint = function (cb) {
     }
 };
 ```
+
 :::
 
 ::: details 否则，取以下不包含 `Slint` 校验逻辑的 `check-legal.js`
+
 ```js
 const path = require('path'),
     _ = require('lodash'),
@@ -364,6 +367,7 @@ var runTest = function () {
     }
 };
 ```
+
 :::
 
 ## 2. `config/index.js`
@@ -539,10 +543,12 @@ yarn-error.log*
 
 ## QA
 
-### 指定了 main 入口为 src 下，但引用这个包的地方缺少 src 文件夹？
+::: details 指定了 main 入口为 src 下，但引用这个包的地方缺少 src 文件夹？
 
 -   问题详情
     ![img_1.png](img_1.png)
 
 -   解决方案：排查 .gitignore 下是否包含`src/`目录，若包含，则在 npm publish 时会将 src 目录忽略，将该忽略规则删除即可
     ![img.png](img.png)
+
+:::
