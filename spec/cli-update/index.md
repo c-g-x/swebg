@@ -10,7 +10,7 @@
 This is a details block.
 :::
 
-::: 若原本 `build/check-legal.js` 下已有 Slint 校验规则，则取这份 `check-legal.js`
+::: details 若原本 `build/check-legal.js` 下已有 Slint 校验规则，则取以下代码
 ```js
 const path = require('path'),
     _ = require('lodash'),
@@ -212,8 +212,7 @@ var runSlint = function (cb) {
 ```
 :::
 
-否则，取以下不包含 `Slint` 校验逻辑的 `check-legal.js`
-
+::: details 否则，取以下不包含 `Slint` 校验逻辑的 `check-legal.js`
 ```js
 const path = require('path'),
     _ = require('lodash'),
@@ -369,6 +368,7 @@ var runTest = function () {
     }
 };
 ```
+:::
 
 ## 2. `config/index.js`
 
