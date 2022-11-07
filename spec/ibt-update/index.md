@@ -1,37 +1,52 @@
-# TPF 升级流程
+# IBT 升级流程
 
-以 1.0.1.10 升级 1.0.1.11 为例
+以 1.0.1.9 升级 1.0.1.10 为例
 
 ## pom.xml 调整
 
-1. `tpf/pom.xml`
+1. `ibt/pom.xml`, `ibt-bootstrap`, `ibt-dfa-controller`, `ibt-dfa-facade`, `ibt-dfa-impl`, `ibt-dfa-service`
 
-```xml{9,18}
+::: detail 调整父级版本号
+
+```xml{4}
+<parent>
+    <groupId>com.shine.dfa.ibt</groupId>
+    <artifactId>ibt-project</artifactId>
+    <version>1.0.1.10</version>
+    <relativePath>../pom.xml</relativePath>
+</parent>
+```
+
+:::
+
+2. `pom.xml`
+
+::: detail 调整主 pom 文件以下部分
+
+```xml{6,13}
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- ... -->
+    <groupId>com.shine.dfa.ibt</groupId>
+    <artifactId>ibt-project</artifactId>
+    <version>1.0.1.10</version>
+    <packaging>pom</packaging>
 
-	<profiles>
-		<profile>
-			<id>release</id>
-			<properties>
-				<tpf.version>1.0.1.11</tpf.version>
-			</properties>
-		</profile>
-	</profiles>
-
-    <!-- ... -->
-
-    <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tpf.version>1.0.1.11-SNAPSHOT</tpf.version>
-	</properties>
-
-    <!-- ... -->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <ibt.version>1.0.1.10</ibt.version>
+                <!-- ... -->
+            </properties>
+        </profile>
+    </profiles>
 </project>
 ```
 
-2. `tpf-bootstrap/pom.xml`
+:::
+
+4. `tpf-bootstrap/pom.xml`
 
 ```xml{9,18}
 <project xmlns="http://maven.apache.org/POM/4.0.0"
