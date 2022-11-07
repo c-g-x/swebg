@@ -46,85 +46,91 @@
 
 :::
 
-4. `tpf-bootstrap/pom.xml`
-
-```xml{9,18}
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- ... -->
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <properties>
-                <tpf.version>1.0.1.11</tpf.version>
-            </properties>
-        </profile>
-    </profiles>
-
-    <!-- ... -->
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tpf.version>1.0.1.11-SNAPSHOT</tpf.version>
-    </properties>
-
-    <!-- ... -->
-</project>
-```
-
-3. `tpf-dfa-controller/pom.xml` 同上
-4. `tpf-dfa-facade/pom.xml` 同上
-5. `tpf-dfa-impl/pom.xml` 同上
-6. `tpf-service/pom.xml` 同上
-7. `pom.xml` 同上
-
 ## Oracle 脚本调整
 
 ### 1. `Oracle/update_main.bat`
 
-调整为升级`当前版本（1.0.1.11）`依赖的 TPF 版本号，通常为`上个版本（1.0.1.10）`
+搜索 **IBT_INSTALL_VERSION**，调整为当前需升级的版本号（1.0.1.10）
 
-```bat{7}
-@REM ...
-
-@REM 每个版本发布时需要修改依赖的版本号，版本号必须用双引号""括起,因为如果版本号有空格的话BAT无法执行
-   @REM ==========================================================
-   @REM BEGIN OF 升级脚本
-   @REM 检测自身版本依赖
-   @CALL VERSIONCHECK.BAT %2 %3 %1 "E-PBOS-TPF 1.0.1.10"
-   @IF "%4" == "0" GOTO INSTALL
-
-@REM ...
+```bash
+    @REM 本升级包版本号
+    SET IBT_INSTALL_VERSION="E-IBT 1.0.1.10"
+    @REM 获取已安装的小于升级包版本的最新版本号
 ```
 
-本升级包版本号修改为当前版本号
+增加当前小版本升级脚本（10110）
 
-```text{2}
-   @REM 本升级包版本号
-   SET INSTALL_VERSION="E-PBOS-TPF 1.0.1.11"
-   @REM 获取已安装的小于升级包版本的最新版本号
+```bash{10-13}
+:1018
+@if %ver% geq 1018 goto 1019
+@ECHO "开始1018小版本升级脚本"
+CD %IBT_PATH%\1018
+CALL update_main.bat %1 %2 %3
+@if %ver% geq 1019 goto 10110
+@ECHO "开始1019小版本升级脚本"
+CD %IBT_PATH%\1019
+CALL update_main.bat %1 %2 %3
+:10110
+@ECHO "开始10110小版本升级脚本"
+CD %IBT_PATH%\10110
+CALL update_main.bat %1 %2 %3
 ```
 
-### 2. `Oracle/ES_TPF/Update/Init/Update_Log.sql`
+### 2. `Oracle/10110/EA_IBT/Update/Init/Update_Log.sql`
 
-修改为当前版本号
+路径中 10110 为当前版本号去除 `.`，例如当前为 E-IBT 1.0.1.10，则对应路径为 `Oracle/10110/xxx`
+
+以下内容修改为当前版本号
 
 ```sql{9-10}
 --以下语句固定放在升级脚本的最后
 --增加升级日志说明
 INSERT INTO TPF_UPDATE_LOG
     (ID, APP_ID, UP_DATE, UP_TIME, UP_VERSION, UP_DESC, NOTE, UP_TYPE)
-SELECT S_TPF_UPDATE_LOG.NEXTVAL,
-       '56',
-       TO_CHAR(SYSDATE, 'YYYYMMDD'),
-       TO_CHAR(SYSDATE, 'HH24:MI:SS'),
-       'E-PBOS-TPF 1.0.1.11',
-       'E-PBOS-TPF 1.0.1.11 升级',
-       '',
-       '1'
-  FROM DUAL;
+    SELECT S_TPF_UPDATE_LOG.NEXTVAL,
+        '56',
+        TO_CHAR(SYSDATE, 'YYYYMMDD'),
+        TO_CHAR(SYSDATE, 'HH24:MI:SS'),
+        'E-IBT 1.0.1.10',
+        'E-IBT 1.0.1.10 升级',
+        '',
+        '1'
+    FROM DUAL;
 COMMIT;
+```
+
+### 3. `Oracle/10110/update_main.bat`
+
+调整对应 E-PBOS-TPF 的版本依赖，例如 E-IBT 1.0.1.10 版本时，对应的 E-PBOS-TPF 版本为 **1.0.1.11**
+
+```bash{12-15}
+REM
+REM  %1:数据库实例名
+REM  %2:IBT用户
+REM  %3:IBT用户密码
+REM  调用举例:update_main.bat 10.168.0.93:1521/orcl EA_IBT EA_IBT
+REM
+@ECHO OFF
+SET NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+SET IBT_SAVE_PATH="%CD%"
+
+@REM ==========================================================
+CD %IBT_SAVE_PATH%\COMP_SCRIPT\E-PBOS-TPF 1.0.1.11
+@ECHO ########升级E-PBOS-TPF 1.0.1.11 >>%IBT_PATH%\TPF_UPDATE_MAIN.LOG
+CALL update_main.bat %1 %2 %3 >>%IBT_PATH%\TPF_UPDATE_MAIN.LOG
+@ECHO ########执行组件升级脚本结束 >>%IBT_PATH%\TPF_UPDATE_MAIN.LOG
+@REM ==========================================================
+
+@REM ==========================================================
+@ECHO ########开始执行小版本升级脚本
+CD %IBT_SAVE_PATH%
+
+CALL update_main_table.bat %1 %2 %3
+
+CALL update_main_init.bat %1 %2 %3
+
+@ECHO ########执行小版本升级脚本结束
+@REM ==========================================================
 ```
 
 ## Gauss 脚本调整
