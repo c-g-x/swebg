@@ -135,21 +135,56 @@ CALL update_main_init.bat %1 %2 %3
 
 ## Gauss 脚本调整
 
-### 1. `Gauss/ES_TPF/Update/Init/Update_Log.sql`
+### 1. `Gauss/exec_main/bash/main.sh`
+
+```shell{11-14}
+  #开始安装组件1019
+  echo "开始安装组件TPF"
+  #exec "$BASE_PATH/../../COMP_SCRIPT/E-PBOS-TPF 1.0.1.9/exec_main/bash/main.sh" $*
+  echo exit | gsql -d "$ARG_DBNAME" -U "$ARG_USERNAME" -W "$ARG_PASSWD" -h "$ARG_HOST" -p "$ARG_PORT" -f "$BASE_PATH/../../COMP_SCRIPT/E-PBOS-TPF 1.0.1.9/exec_update/update_main.sql" 1>"$SH_DIR/main_tpf.log" 2>"$SH_DIR/main_tpf_error.log"
+
+  #开始安装组件10110
+  echo "开始安装组件TPF"
+  #exec "$BASE_PATH/../../COMP_SCRIPT/E-PBOS-TPF 1.0.1.10/exec_main/bash/main.sh" $*
+  echo exit | gsql -d "$ARG_DBNAME" -U "$ARG_USERNAME" -W "$ARG_PASSWD" -h "$ARG_HOST" -p "$ARG_PORT" -f "$BASE_PATH/../../COMP_SCRIPT/E-PBOS-TPF 1.0.1.10/exec_update/update_main.sql" 1>"$SH_DIR/main_tpf.log" 2>"$SH_DIR/main_tpf_error.log"
+
+  #开始安装组件10111
+  echo "开始安装组件TPF"
+  #exec "$BASE_PATH/../../COMP_SCRIPT/E-PBOS-TPF 1.0.1.11/exec_main/bash/main.sh" $*
+  echo exit | gsql -d "$ARG_DBNAME" -U "$ARG_USERNAME" -W "$ARG_PASSWD" -h "$ARG_HOST" -p "$ARG_PORT" -f "$BASE_PATH/../../COMP_SCRIPT/E-PBOS-TPF 1.0.1.11/exec_update/update_main.sql" 1>"$SH_DIR/main_tpf.log" 2>"$SH_DIR/main_tpf_error.log"
+```
+
+### 2. `Gauss/EA_IBT/Update/Init/Update_Log.sql`
 
 ```sql{9-10}
 --以下语句固定放在升级脚本的最后
 --增加升级日志说明
+INSERT INTO ES_TPF.TPF_UPDATE_LOG
+   (ID, APP_ID, UP_DATE, UP_TIME, UP_VERSION, UP_DESC, NOTE, UP_TYPE)
+   SELECT ES_TPF.S_TPF_UPDATE_LOG.NEXTVAL,
+       '56',
+       TO_CHAR(SYSDATE, 'YYYYMMDD'),
+       TO_CHAR(SYSDATE, 'HH24:MI:SS'),
+       'E-IBT 1.0.1.10',
+       'E-IBT 1.0.1.10 升级',
+       '',
+       '1'
+   FROM DUAL;
+COMMIT;
+```
+
+### 3. `Gauss/EA_IBT/Init/init_TPF_UPDATE_LOG.sql`
+
+```sql{7-8}
 INSERT INTO ES_TPF.TPF_UPDATE_LOG
     (ID, APP_ID, UP_DATE, UP_TIME, UP_VERSION, UP_DESC, NOTE, UP_TYPE)
 SELECT ES_TPF.S_TPF_UPDATE_LOG.NEXTVAL,
        '56',
        TO_CHAR(SYSDATE, 'YYYYMMDD'),
        TO_CHAR(SYSDATE, 'HH24:MI:SS'),
-       'E-PBOS-TPF 1.0.1.11',
-       'E-PBOS-TPF 1.0.1.11 升级',
+       'E-IBT 1.0.1.10',
+       'E-IBT 1.0.1.10 标准版',
        '',
-       '1'
+       '0'
   FROM ES_TPF.DUAL;
-COMMIT;
 ```
