@@ -6,7 +6,7 @@
 
 1. `ibt/pom.xml`, `ibt-bootstrap`, `ibt-dfa-controller`, `ibt-dfa-facade`, `ibt-dfa-impl`, `ibt-dfa-service`
 
-::: detail 调整父级版本号
+::: details 调整父级版本号
 
 ```xml{4}
 <parent>
@@ -21,7 +21,7 @@
 
 2. `pom.xml`
 
-::: detail 调整主 pom 文件以下部分
+::: details 调整主 pom 文件以下部分
 
 ```xml{6,13}
 <project xmlns="http://maven.apache.org/POM/4.0.0"
