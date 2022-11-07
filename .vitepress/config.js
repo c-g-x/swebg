@@ -57,6 +57,10 @@ export default {
                     {
                         text: 'CSS',
                         link: '/study/css/index.md'
+                    },
+                    {
+                        text: 'JSX',
+                        link: '/study/jsx/index.md'
                     }
                 ]
             },
