@@ -372,7 +372,7 @@ var runTest = function () {
 
 ## 2. `config/index.js`
 
-若包含以下高亮行代码
+将 devtool 改为 `eval-source-map`
 
 ```js{4}
 module.exports = {
@@ -390,7 +390,7 @@ module.exports = {
 module.exports = {
     dev: {
         // ...
-        devtool: 'eval-cheap-module-source-map'
+        devtool: 'eval-source-map'
         // ...
     }
 };
