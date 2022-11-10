@@ -6,6 +6,10 @@
 
 1. `tpf/pom.xml`
 
+::: details 调整内容
+
+````xml{3-4}
+
 ```xml{9,18}
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -29,9 +33,13 @@
 
     <!-- ... -->
 </project>
-```
+````
+
+:::
 
 2. `tpf-bootstrap/pom.xml`
+
+::: details 调整内容
 
 ```xml{9,18}
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -58,6 +66,8 @@
 </project>
 ```
 
+:::
+
 3. `tpf-dfa-controller/pom.xml` 同上
 4. `tpf-dfa-facade/pom.xml` 同上
 5. `tpf-dfa-impl/pom.xml` 同上
@@ -69,6 +79,8 @@
 ### 1. `Oracle/update_main.bat`
 
 调整为升级`当前版本（1.0.1.11）`依赖的 TPF 版本号，通常为`上个版本（1.0.1.10）`
+
+::: details 调整内容
 
 ```bat{7}
 @REM ...
@@ -83,7 +95,11 @@
 @REM ...
 ```
 
+:::
+
 本升级包版本号修改为当前版本号
+
+::: details 调整内容
 
 ```text{2}
    @REM 本升级包版本号
@@ -91,9 +107,13 @@
    @REM 获取已安装的小于升级包版本的最新版本号
 ```
 
+:::
+
 ### 2. `Oracle/ES_TPF/Update/Init/Update_Log.sql`
 
 修改为当前版本号
+
+::: details 调整内容
 
 ```sql{9-10}
 --以下语句固定放在升级脚本的最后
@@ -112,9 +132,13 @@ SELECT S_TPF_UPDATE_LOG.NEXTVAL,
 COMMIT;
 ```
 
+:::
+
 ## Gauss 脚本调整
 
 ### 1. `Gauss/ES_TPF/Update/Init/Update_Log.sql`
+
+::: details 调整内容
 
 ```sql{9-10}
 --以下语句固定放在升级脚本的最后
@@ -132,3 +156,5 @@ SELECT ES_TPF.S_TPF_UPDATE_LOG.NEXTVAL,
   FROM ES_TPF.DUAL;
 COMMIT;
 ```
+
+:::

@@ -70,6 +70,10 @@ export default {
                     {
                         text: '小工具',
                         link: '/other/toolkit/index.md'
+                    },
+                    {
+                        text: '资金调拨移动端',
+                        link: '/other/fund-transfer-mobile/index.md'
                     }
                 ]
             }
