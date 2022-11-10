@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as r,e as a}from"./app.28d483b6.js";const p=JSON.parse('{"title":"JSX","description":"","frontmatter":{},"headers":[],"relativePath":"study/jsx/index.md"}'),s={name:"study/jsx/index.md"},o=a("",2),n=[o];function i(l,_,c,d,h,u){return r(),t("div",null,n)}const m=e(s,[["render",i]]);export{p as __pageData,m as default};
