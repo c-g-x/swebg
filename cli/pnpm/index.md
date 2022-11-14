@@ -75,7 +75,23 @@ pnpm outdated --long
 └───────────────────────────────────┴──────────────┴────────────┴─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## tip3: 检查 pnpm 已知的常见配置问题 <Badge type="warning" text="beta" />
+## tip3: 查看依赖包的版本
+
+```bash
+pnpm view [包名] version # 查看包的最新版本
+
+pnpm view [包名] versions # 查看包的所有版本
+```
+
+eg:
+
+```bash
+pnpm view puppeteer version # 查看 puppeteer 最新版本
+
+pnpm view puppeteer versions # 查看 puppeteer 所有版本
+```
+
+## tip4: 检查 pnpm 已知的常见配置问题 <Badge type="warning" text="beta" />
 
 ```bash
 pnpm doctor
